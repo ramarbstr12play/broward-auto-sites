@@ -2,6 +2,7 @@
   "name": "broward-auto-sites",
   "version": "0.1.0",
   "private": true,
+  "main": "node_modules/next/dist/bin/next",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
