@@ -1,58 +1,78 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Next.js: dev server",
-            "runtimeExecutable": "C:\\Program Files\\nodejs\\npm.cmd",
-            "runtimeArgs": ["run", "dev"],
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal",
-            "env": {
-                "PATH": "C:\\Program Files\\nodejs;${env:PATH}"
-            },
-            "serverReadyAction": {
-                "pattern": "- Local:.+(https?://.+)",
-                "uriFormat": "%s",
-                "action": "openExternally"
-            }
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Generate: example site",
-            "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
-            "program": "${workspaceFolder}/scripts/generate-site-from-json.mjs",
-            "args": ["./data/example-plumber.json"],
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal",
-            "env": {
-                "PATH": "C:\\Program Files\\nodejs;${env:PATH}"
-            }
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Generate: all sites",
-            "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
-            "program": "${workspaceFolder}/scripts/generate-site-from-json.mjs",
-            "args": ["./data/*.json"],
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal",
-            "env": {
-                "PATH": "C:\\Program Files\\nodejs;${env:PATH}"
-            }
-        },
-        {
-            "type": "msedge",
-            "request": "launch",
-            "name": "Launch Edge against localhost",
-            "url": "http://localhost:3000",
-            "webRoot": "${workspaceFolder}"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Next.js: dev server",
+      "runtimeExecutable": "C:\\Program Files\\nodejs\\npm.cmd",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "env": {
+        "PATH": "C:\\Program Files\\nodejs;${env:PATH}"
+      },
+      "serverReadyAction": {
+        "pattern": "- Local:.+(https?://.+)",
+        "uriFormat": "%s",
+        "action": "openExternally"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Generate: example site",
+      "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
+      "program": "${workspaceFolder}/scripts/generate-site-from-json.mjs",
+      "args": ["./data/example-plumber.json"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "env": {
+        "PATH": "C:\\Program Files\\nodejs;${env:PATH}"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Generate: all sites",
+      "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
+      "program": "${workspaceFolder}/scripts/generate-site-from-json.mjs",
+      "args": ["./data/*.json"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "env": {
+        "PATH": "C:\\Program Files\\nodejs;${env:PATH}"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Import leads",
+      "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
+      "program": "${workspaceFolder}/scripts/import-leads.mjs",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "env": {
+        "PATH": "C:\\Program Files\\nodejs;${env:PATH}"
+      }
+    },
+    {
+      "type": "msedge",
+      "request": "launch",
+      "name": "Edge: localhost",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Next.js + Edge",
+      "configurations": ["Next.js: dev server", "Edge: localhost"],
+      "stopAll": true
+    }
+  ]
 }
