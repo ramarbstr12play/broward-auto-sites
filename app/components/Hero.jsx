@@ -1,18 +1,17 @@
-export default function Hero({ data, phone }) {
+export default function Hero({ service_category, city, phone, primaryColor, accentColor }) {
   return (
-    <section className="bg-primary text-white py-20 px-6">
-      <div className="max-w-4xl mx-auto text-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
-          {data.headline}
-        </h1>
-        <p className="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-          {data.subheadline}
+    <section className="hero" style={{ background: primaryColor || "#004AAD" }}>
+      <div className="container">
+        <h1>Professional {service_category} in {city}</h1>
+        <p style={{ fontSize: "1.2rem", margin: "16px 0 24px" }}>
+          Trusted local {service_category.toLowerCase()} experts serving {city} and surrounding areas.
         </p>
         <a
-          href={data.ctaLink}
-          className="inline-block bg-accent text-black font-bold text-lg px-8 py-4 rounded-xl hover:bg-yellow-400 transition-colors"
+          href={`tel:${phone.replace(/\D/g, "")}`}
+          className="btn-primary"
+          style={{ background: accentColor || "#FF7A00", color: "#fff" }}
         >
-          {data.ctaText} — {phone}
+          Call Now &mdash; {phone}
         </a>
       </div>
     </section>

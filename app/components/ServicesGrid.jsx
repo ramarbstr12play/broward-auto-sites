@@ -1,19 +1,12 @@
-export default function ServicesGrid({ services }) {
+export default function ServicesGrid({ services_list, city }) {
   return (
-    <section className="py-16 px-6">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow"
-            >
-              <div className="text-4xl mb-4">{service.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-              <p className="text-muted leading-relaxed">
-                {service.description}
-              </p>
+    <section style={{ padding: "48px 0" }}>
+      <div className="container">
+        <h2 style={{ textAlign: "center", marginBottom: "32px" }}>Our Services in {city}</h2>
+        <div className="service-grid">
+          {services_list.map((service) => (
+            <div key={service} className="service-card">
+              <h3>{service}</h3>
             </div>
           ))}
         </div>
