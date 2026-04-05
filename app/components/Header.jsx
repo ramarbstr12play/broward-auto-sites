@@ -1,17 +1,20 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-export default function Header({ business_name }) {
+export default function Header({ business_name, phone }) {
   return (
-    <header>
-      <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <Link href="/" style={{ fontWeight: "bold", fontSize: "1.25rem", textDecoration: "none", color: "inherit" }}>
+    <header className="site-header">
+      <div className="container">
+        <Link href="/" className="logo">
           {business_name}
         </Link>
-        <nav>
+        <nav className="main-nav">
           <Link href="/">Home</Link>
           <Link href="/services">Services</Link>
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>
+          <a href={`tel:${phone}`} className="nav-cta">
+            {phone}
+          </a>
         </nav>
       </div>
     </header>

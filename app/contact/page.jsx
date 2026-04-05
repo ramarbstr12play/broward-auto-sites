@@ -1,67 +1,127 @@
-import config from "../../data/example-plumber.json";
+import config from '../../data/example-plumber.json';
+import Hero from '../components/Hero';
 
 export const metadata = {
   title: `Contact | ${config.business_name}`,
-  description: `Contact ${config.business_name} for ${config.service_category.toLowerCase()} services in ${config.service_area}. Call ${config.phone}.`,
+  description: `Contact ${config.business_name} for ${config.service_category.toLowerCase()} services in ${config.service_area}. Call ${config.phone}.`
 };
 
 export default function ContactPage() {
-  const { business_name, phone, email, address, brand_colors, service_category, service_area } = config;
+  const {
+    business_name,
+    phone,
+    email,
+    address,
+    service_category,
+    service_area,
+    services_list
+  } = config;
 
   return (
     <>
-      <section className="hero" style={{ backgroundColor: brand_colors.primary }}>
-        <div className="container">
-          <h2>Contact {business_name}</h2>
-          <p>Ready to schedule service? Get in touch today.</p>
-        </div>
-      </section>
+      <Hero
+        badge="Get In Touch"
+        title={`Contact ${business_name}`}
+        subtitle="Ready to schedule service? We'd love to hear from you. Reach out today for a free estimate."
+        showActions={false}
+      />
 
-      <section style={{ padding: "48px 0" }}>
+      <section className="section">
         <div className="container contact-grid">
-          <div>
-            <h3>Get In Touch</h3>
-            <div className="contact-info">
+          <div className="contact-info-card">
+            <h3>Let&apos;s Talk</h3>
+            <p>
+              We&apos;re here to help with all your{' '}
+              {service_category.toLowerCase()} needs in {service_area}.
+            </p>
+            <div className="contact-detail">
+              <div className="contact-detail-icon">📞</div>
               <div>
-                <strong>Phone</strong>
-                <p><a href={`tel:${phone}`}>{phone}</a></p>
+                <p>Phone</p>
+                <p>
+                  <a href={`tel:${phone}`}>{phone}</a>
+                </p>
               </div>
+            </div>
+            <div className="contact-detail">
+              <div className="contact-detail-icon">✉️</div>
               <div>
-                <strong>Email</strong>
-                <p><a href={`mailto:${email}`}>{email}</a></p>
+                <p>Email</p>
+                <p>
+                  <a href={`mailto:${email}`}>{email}</a>
+                </p>
               </div>
+            </div>
+            <div className="contact-detail">
+              <div className="contact-detail-icon">📍</div>
               <div>
-                <strong>Address</strong>
+                <p>Address</p>
                 <p>{address}</p>
               </div>
+            </div>
+            <div className="contact-detail">
+              <div className="contact-detail-icon">🗺️</div>
               <div>
-                <strong>Service Area</strong>
+                <p>Service Area</p>
                 <p>{service_area}</p>
               </div>
             </div>
           </div>
-
-          <div>
-            <h3>Send a Message</h3>
-            <form className="contact-form">
-              <label>
-                Name
-                <input type="text" name="name" required />
-              </label>
-              <label>
-                Phone
-                <input type="tel" name="phone" required />
-              </label>
-              <label>
-                Email
-                <input type="email" name="email" />
-              </label>
-              <label>
-                Message
-                <textarea name="message" rows={4} required></textarea>
-              </label>
-              <button type="submit" className="btn-primary" style={{ backgroundColor: brand_colors.primary, color: "#fff", border: "none", cursor: "pointer" }}>
-                Send Message
+          <div className="contact-form">
+            <h3>Send Us a Message</h3>
+            <form>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="name">Full Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="John Doe"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="phone">Phone Number</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="(954) 555-0000"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="john@example.com"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="service">Service Needed</label>
+                <input
+                  type="text"
+                  id="service"
+                  name="service"
+                  placeholder={`e.g. ${services_list[0]}`}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  placeholder="Tell us about your project..."
+                  required
+                />
+              </div>
+              <button type="submit" className="form-submit">
+                Send Message →
               </button>
             </form>
           </div>

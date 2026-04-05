@@ -1,44 +1,32 @@
-import config from "../../data/example-plumber.json";
+import config from '../../data/example-plumber.json';
+import CTA from '../components/CTA';
+import Hero from '../components/Hero';
+import ServicesGrid from '../components/ServicesGrid';
 
 export const metadata = {
   title: `Services | ${config.business_name}`,
-  description: `Professional ${config.service_category.toLowerCase()} services in ${config.service_area}: ${config.services_list.join(", ")}.`,
+  description: `Professional ${config.service_category.toLowerCase()} services in ${config.service_area}: ${config.services_list.join(', ')}.`
 };
 
 export default function ServicesPage() {
-  const { services_list, city, service_category, phone, brand_colors } = config;
+  const { services_list, city, service_category, phone, service_area } = config;
 
   return (
     <>
-      <section className="hero" style={{ backgroundColor: brand_colors.primary }}>
-        <div className="container">
-          <h2>Our {service_category} Services</h2>
-          <p>Professional solutions for homes and businesses in {city} and across {config.service_area}.</p>
-        </div>
-      </section>
+      <Hero
+        badge="Our Expertise"
+        title={`Our ${service_category} Services`}
+        subtitle={`Comprehensive ${service_category.toLowerCase()} solutions for residential and commercial properties across ${service_area}.`}
+        showActions={false}
+      />
 
-      <section style={{ padding: "48px 0" }}>
-        <div className="container">
-          <div className="service-grid">
-            {services_list.map((service) => (
-              <div className="service-card" key={service}>
-                <h4>{service}</h4>
-                <p>Professional {service.toLowerCase()} services in {city} and surrounding areas.</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicesGrid services_list={services_list} city={city} />
 
-      <section className="cta-section" style={{ backgroundColor: brand_colors.accent }}>
-        <div className="container" style={{ textAlign: "center", padding: "48px 0" }}>
-          <h3>Need {service_category} Help?</h3>
-          <p>Fast response times across {config.service_area}.</p>
-          <a href={`tel:${phone}`} className="btn-primary" style={{ backgroundColor: brand_colors.primary }}>
-            Call {phone}
-          </a>
-        </div>
-      </section>
+      <CTA
+        headline="Ready to Get Started?"
+        subtitle={`Contact us today for a free estimate on any of our ${service_category.toLowerCase()} services.`}
+        phone={phone}
+      />
     </>
   );
 }

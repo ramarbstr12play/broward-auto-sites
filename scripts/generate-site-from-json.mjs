@@ -268,7 +268,10 @@ function renderPage(config, { title, bodyHTML }) {
         </div>
         <div class="footer-col">
           <h4>Services</h4>
-          ${c.services_list.slice(0, 4).map((s) => `<a href="services.html">${esc(s)}</a>`).join('\n          ')}
+          ${c.services_list
+            .slice(0, 4)
+            .map((s) => `<a href="services.html">${esc(s)}</a>`)
+            .join('\n          ')}
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
@@ -307,7 +310,18 @@ function buildSchema(c) {
 }
 
 function homeBody(c) {
-  const serviceIcons = ['🔧', '🔍', '🔥', '🛠️', '🚨', '💧', '⚡', '🏠', '🪛', '✅'];
+  const serviceIcons = [
+    '🔧',
+    '🔍',
+    '🔥',
+    '🛠️',
+    '🚨',
+    '💧',
+    '⚡',
+    '🏠',
+    '🪛',
+    '✅'
+  ];
   return `
   <section class="hero">
     <div class="container">
@@ -340,11 +354,15 @@ function homeBody(c) {
         <p class="section-subtitle">From routine maintenance to emergency repairs, we deliver professional ${esc(c.service_category.toLowerCase())} solutions you can count on.</p>
       </div>
       <div class="service-grid">
-        ${c.services_list.map((s, i) => `<div class="service-card">
+        ${c.services_list
+          .map(
+            (s, i) => `<div class="service-card">
           <div class="service-icon">${serviceIcons[i % serviceIcons.length]}</div>
           <h4>${esc(s)}</h4>
           <p>Professional ${esc(s.toLowerCase())} services for homes and businesses in ${esc(c.city)}.</p>
-        </div>`).join('\n        ')}
+        </div>`
+          )
+          .join('\n        ')}
       </div>
     </div>
   </section>
@@ -384,7 +402,18 @@ function homeBody(c) {
 }
 
 function servicesBody(c) {
-  const serviceIcons = ['🔧', '🔍', '🔥', '🛠️', '🚨', '💧', '⚡', '🏠', '🪛', '✅'];
+  const serviceIcons = [
+    '🔧',
+    '🔍',
+    '🔥',
+    '🛠️',
+    '🚨',
+    '💧',
+    '⚡',
+    '🏠',
+    '🪛',
+    '✅'
+  ];
   return `
   <section class="hero">
     <div class="container">
@@ -397,11 +426,15 @@ function servicesBody(c) {
   <section class="section">
     <div class="container">
       <div class="service-grid">
-        ${c.services_list.map((s, i) => `<div class="service-card">
+        ${c.services_list
+          .map(
+            (s, i) => `<div class="service-card">
           <div class="service-icon">${serviceIcons[i % serviceIcons.length]}</div>
           <h4>${esc(s)}</h4>
           <p>Our expert team provides professional ${esc(s.toLowerCase())} services throughout ${esc(c.city)} and the surrounding ${esc(c.service_area)} area. We use industry-leading techniques to deliver lasting results.</p>
-        </div>`).join('\n        ')}
+        </div>`
+          )
+          .join('\n        ')}
       </div>
     </div>
   </section>

@@ -1,18 +1,26 @@
-export default function Hero({ service_category, city, phone, primaryColor, accentColor }) {
+export default function Hero({
+  badge,
+  title,
+  subtitle,
+  phone,
+  showActions = true
+}) {
   return (
-    <section className="hero" style={{ background: primaryColor || "#004AAD" }}>
+    <section className="hero">
       <div className="container">
-        <h1>Professional {service_category} in {city}</h1>
-        <p style={{ fontSize: "1.2rem", margin: "16px 0 24px" }}>
-          Trusted local {service_category.toLowerCase()} experts serving {city} and surrounding areas.
-        </p>
-        <a
-          href={`tel:${phone.replace(/\D/g, "")}`}
-          className="btn-primary"
-          style={{ background: accentColor || "#FF7A00", color: "#fff" }}
-        >
-          Call Now &mdash; {phone}
-        </a>
+        {badge && <span className="hero-badge">{badge}</span>}
+        <h1>{title}</h1>
+        {subtitle && <p>{subtitle}</p>}
+        {showActions && phone && (
+          <div className="hero-actions">
+            <a href={`tel:${phone}`} className="btn btn-primary">
+              📞 {phone}
+            </a>
+            <a href="/contact" className="btn btn-outline">
+              Get a Free Quote
+            </a>
+          </div>
+        )}
       </div>
     </section>
   );

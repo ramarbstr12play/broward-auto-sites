@@ -1,17 +1,59 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-export default function Footer({ business_name, year }) {
+export default function Footer({
+  business_name,
+  year,
+  service_category,
+  service_area,
+  services_list,
+  phone,
+  email,
+  address
+}) {
   return (
-    <footer style={{ background: "#222", color: "#ccc", padding: "32px 0", marginTop: "48px" }}>
-      <div className="container" style={{ textAlign: "center" }}>
-        <p><strong style={{ color: "#fff" }}>{business_name}</strong></p>
-        <nav style={{ margin: "12px 0" }}>
-          <Link href="/" style={{ color: "#ccc" }}>Home</Link>
-          <Link href="/services" style={{ color: "#ccc" }}>Services</Link>
-          <Link href="/about" style={{ color: "#ccc" }}>About</Link>
-          <Link href="/contact" style={{ color: "#ccc" }}>Contact</Link>
-        </nav>
-        <p style={{ fontSize: "0.85rem" }}>&copy; {year || new Date().getFullYear()} {business_name}. All rights reserved.</p>
+    <footer className="site-footer">
+      <div className="container">
+        <div className="footer-grid">
+          <div className="footer-brand">
+            <span className="logo">{business_name}</span>
+            <p>
+              Professional {service_category?.toLowerCase()} services proudly
+              serving {service_area}.
+            </p>
+          </div>
+          <div className="footer-col">
+            <h4>Pages</h4>
+            <Link href="/">Home</Link>
+            <Link href="/services">Services</Link>
+            <Link href="/about">About</Link>
+            <Link href="/contact">Contact</Link>
+          </div>
+          <div className="footer-col">
+            <h4>Services</h4>
+            {services_list?.slice(0, 4).map((s) => (
+              <Link href="/services" key={s}>
+                {s}
+              </Link>
+            ))}
+          </div>
+          <div className="footer-col">
+            <h4>Contact</h4>
+            <a href={`tel:${phone}`}>{phone}</a>
+            <a href={`mailto:${email}`}>{email}</a>
+            <span
+              style={{ display: 'block', fontSize: '0.9rem', padding: '4px 0' }}
+            >
+              {address}
+            </span>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span>
+            &copy; {year || new Date().getFullYear()} {business_name}. All
+            rights reserved.
+          </span>
+          <span>Serving {service_area}</span>
+        </div>
       </div>
     </footer>
   );

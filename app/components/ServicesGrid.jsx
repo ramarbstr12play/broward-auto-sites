@@ -1,12 +1,49 @@
-export default function ServicesGrid({ services_list, city }) {
+const SERVICE_ICONS = [
+  '🔧',
+  '🔍',
+  '🔥',
+  '🛠️',
+  '🚨',
+  '💧',
+  '⚡',
+  '🏠',
+  '🪛',
+  '✅'
+];
+
+export default function ServicesGrid({
+  services_list,
+  city,
+  sectionLabel,
+  sectionTitle,
+  sectionSubtitle,
+  alt
+}) {
   return (
-    <section style={{ padding: "48px 0" }}>
+    <section className={`section${alt ? ' section-alt' : ''}`}>
       <div className="container">
-        <h2 style={{ textAlign: "center", marginBottom: "32px" }}>Our Services in {city}</h2>
+        {sectionTitle && (
+          <div className="section-header">
+            {sectionLabel && (
+              <span className="section-label">{sectionLabel}</span>
+            )}
+            <h2 className="section-title">{sectionTitle}</h2>
+            {sectionSubtitle && (
+              <p className="section-subtitle">{sectionSubtitle}</p>
+            )}
+          </div>
+        )}
         <div className="service-grid">
-          {services_list.map((service) => (
+          {services_list.map((service, i) => (
             <div key={service} className="service-card">
-              <h3>{service}</h3>
+              <div className="service-icon">
+                {SERVICE_ICONS[i % SERVICE_ICONS.length]}
+              </div>
+              <h4>{service}</h4>
+              <p>
+                Professional {service.toLowerCase()} services for homes and
+                businesses in {city}.
+              </p>
             </div>
           ))}
         </div>
