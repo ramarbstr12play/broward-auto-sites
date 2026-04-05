@@ -1,0 +1,28 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.enable": true,
+  "eslint.run": "onType",
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "none",
+  "prettier.semi": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "emmet.includeLanguages": {
+    "javascriptreact": "html"
+  },
+  "files.associations": {
+    "*.jsx": "javascriptreact",
+    "*.mjs": "javascript"
+  },
+  "css.validate": true,
+  "search.exclude": {
+    ".next": true,
+    "node_modules": true,
+    "output": true
+  },
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.codeLens.enabled": false
+}

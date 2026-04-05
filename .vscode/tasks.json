@@ -1,0 +1,51 @@
+{
+  "version": "2.0.0",
+  "options": {
+    "env": {
+      "PATH": "C:\\Program Files\\nodejs;${env:PATH}"
+    }
+  },
+  "tasks": [
+    {
+      "label": "dev",
+      "type": "npm",
+      "script": "dev",
+      "problemMatcher": ["$eslint-compact"],
+      "isBackground": true,
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "build",
+      "type": "npm",
+      "script": "build",
+      "problemMatcher": ["$eslint-compact"]
+    },
+    {
+      "label": "lint",
+      "type": "npm",
+      "script": "lint",
+      "problemMatcher": ["$eslint-compact"]
+    },
+    {
+      "label": "generate:example",
+      "type": "npm",
+      "script": "generate:example",
+      "problemMatcher": []
+    },
+    {
+      "label": "generate:all",
+      "type": "npm",
+      "script": "generate:all",
+      "problemMatcher": []
+    },
+    {
+      "label": "import-leads",
+      "type": "npm",
+      "script": "import-leads",
+      "problemMatcher": []
+    }
+  ]
+}
