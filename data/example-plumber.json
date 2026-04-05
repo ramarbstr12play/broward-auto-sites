@@ -1,0 +1,21 @@
+{
+  "business_name": "Broward Pro Plumbing",
+  "city": "Fort Lauderdale",
+  "service_category": "Plumbing",
+  "services_list": [
+    "Drain Cleaning",
+    "Leak Detection",
+    "Water Heater Repair",
+    "Pipe Replacement",
+    "Emergency Plumbing"
+  ],
+  "phone": "954-555-0192",
+  "email": "service@browardproplumbing.com",
+  "address": "1234 NE 1st Ave, Fort Lauderdale, FL",
+  "service_area": "Broward County",
+  "brand_colors": {
+    "primary": "#004AAD",
+    "accent": "#FF7A00"
+  },
+  "current_year": 2026
+}
