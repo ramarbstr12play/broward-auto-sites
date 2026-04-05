@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate:example": "node ./scripts/generate-site-from-json.mjs ./data/example-plumber.json",
+    "generate:all": "node ./scripts/generate-site-from-json.mjs \"./data/*.json\"",
+    "import-leads": "node ./scripts/import-leads.mjs"
   },
   "dependencies": {
     "next": "16.2.2",
